@@ -10,3 +10,12 @@ $query = "select * from posts;";
 $pdo = new PDO($dsn,$username,$pass);
 
 $statement = $pdo->prepare($query);
+
+$statement->execute();
+
+$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+foreach ($posts as $post){
+    echo "<li>".$post['title']."</li>";
+}
+// dd($posts);
