@@ -30,20 +30,3 @@ class Database
     }
 
 }
-
-
-
-
-
-
-
-
-// $db->check();
-// $statement->execute();
-
-// $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-// foreach ($posts as $post){
-//     echo "<li>".$post['title']."</li>";
-// }
-// // dd($posts);
