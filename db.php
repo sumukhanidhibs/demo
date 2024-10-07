@@ -1,21 +1,49 @@
 <?php
 
-require "functions.php";
-$username="sumukha";
-$pass="1144";
+class Database
+{
+    public $conn;
 
-$dsn = "mysql:host=localhost;port=3306;dbname=todo;charset=utf8mb4";
-$query = "select * from posts;";
+    function __construct()
+    {
+        $username="sumukha";
+        $pass="1144";
+        $dsn = "mysql:host=localhost;port=3306;dbname=todo;charset=utf8mb4";
+        $this->conn = new PDO($dsn,$username,$pass);
+    }
 
-$pdo = new PDO($dsn,$username,$pass);
+    public function check()
+    {
+        if ($this->conn){
+            echo "connection succesful";
+        }else{
+            echo "error";
+        }
+    }
+    
 
-$statement = $pdo->prepare($query);
+    public function query($query)
+    {
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
 
-$statement->execute();
-
-$posts = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-foreach ($posts as $post){
-    echo "<li>".$post['title']."</li>";
 }
-// dd($posts);
+
+
+
+
+
+
+
+
+// $db->check();
+// $statement->execute();
+
+// $posts = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+// foreach ($posts as $post){
+//     echo "<li>".$post['title']."</li>";
+// }
+// // dd($posts);
