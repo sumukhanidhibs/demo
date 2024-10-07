@@ -10,7 +10,7 @@ $routes = [
 
 function abort(){
     http_response_code(404);
-    require "controller/404.php";
+    require "views/404.php";
     die();
 }
 

@@ -4,12 +4,13 @@ class Database
 {
     public $conn;
 
-    function __construct()
+    function __construct($config,$username,$pass)
     {
-        $username="sumukha";
-        $pass="1144";
-        $dsn = "mysql:host=localhost;port=3306;dbname=todo;charset=utf8mb4";
-        $this->conn = new PDO($dsn,$username,$pass);
+        $dsn = "mysql:".http_build_query($config,'',';');
+        // dd($dsn);
+        $this->conn = new PDO($dsn,$username,$pass,[
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]);
     }
 
     public function check()
