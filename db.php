@@ -4,7 +4,7 @@ class Database
 {
     public $conn;
 
-    function __construct($config,$username,$pass)
+    function __construct($config,$username="sumukha",$pass="1144")
     {
         $dsn = "mysql:".http_build_query($config,'',';');
         // dd($dsn);
