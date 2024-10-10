@@ -10,14 +10,20 @@ $routes = [
     '/note' => 'controller/note.php'
 ];
 
-function abort(){
-    http_response_code(404);
+function abort($code=404)
+{
+    http_response_code($code);
     require "views/404.php";
     die();
 }
 
-if (array_key_exists($uri,$routes)){
-    require $routes[$uri];
-}else{
-    abort();
+function checkandrender($uri,$routes)
+{
+    if (array_key_exists($uri,$routes)){
+        require $routes[$uri];
+    }else{
+        abort();
+    }
 }
+
+checkandrender($uri,$routes);
