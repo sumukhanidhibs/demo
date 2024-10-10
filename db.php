@@ -8,24 +8,14 @@ class Database
     {
         $dsn = "mysql:".http_build_query($config,'',';');
         // dd($dsn);
-        $this->conn = new PDO($dsn,$username,$pass,[
+        $this -> conn = new PDO($dsn,$username,$pass,[
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         ]);
     }
-
-    public function check()
-    {
-        if ($this->conn){
-            echo "connection succesful";
-        }else{
-            echo "error";
-        }
-    }
     
-
     public function query($query,$params = [])
     {
-        $stmt = $this->conn->prepare($query);
+        $stmt = $this -> conn -> prepare($query);
         $stmt -> execute($params);
         return $stmt;
     }
