@@ -1,18 +1,13 @@
 <?php require("partials/body.php")?>  
 <?php require("partials/nav.php")?>
-
-    <header class="bg-white shadow">
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-            <h1 class="text-3xl font-bold tracking-tight text-gray-900">Dashboard</h1>
-        </div>
-    </header>
+<?php require("partials/header.php")?>
 
     <main>
         <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             This is a tutorial about php links.
         </div>
     </main>
-</div>
 
-</body>
-</html>
+
+
+<?php require("partials/footer.php")?>
