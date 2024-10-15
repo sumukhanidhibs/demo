@@ -3,6 +3,7 @@
 class Database
 {
     public $conn;
+    public $stmt;
 
     function __construct($config,$username="sumukha",$pass="1144")
     {
@@ -15,9 +16,30 @@ class Database
     
     public function query($query,$params = [])
     {
-        $stmt = $this -> conn -> prepare($query);
-        $stmt -> execute($params);
-        return $stmt;
+        $this -> stmt = $this -> conn -> prepare($query);
+        $this->stmt -> execute($params);
+        return $this;
+    }
+
+    public function find(){
+        return $this->stmt->fetch();
+    }
+
+    public function findorobort(){
+        $result = $this->find();
+
+        if (!$result)
+        {
+            abort($code=404);
+        }
+
+        return $result;
+    }
+
+    public function get(){
+        // dd($this->stmt->fetchAll());
+
+       return $this->stmt->fetchAll();
     }
 
 }

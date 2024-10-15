@@ -13,7 +13,13 @@ $routes = [
 function abort($code=404)
 {
     http_response_code($code);
-    require "views/404.php";
+    if ($code==404)
+    {
+        require "views/404.php";
+    }elseif($code==403){
+        require "views/403.php";
+    }
+    
     die();
 }
 

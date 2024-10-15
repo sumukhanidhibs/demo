@@ -9,7 +9,8 @@ $heading = "Notes";
 
 if ($uri=='/notes')
 {
-    $notes = $db->query("select * from notes,user where user.id = notes.user_id;",[])->fetchAll();
+    $notes = $db->query("select notes.id,notes.title,notes.content,notes.user_id,user.name from notes,user where notes.user_id=user.id;",[])-> get();
+
     require "views/notes.views.php";
 }
     
