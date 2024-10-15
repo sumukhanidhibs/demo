@@ -9,6 +9,10 @@
                 <a href="note?id=<?=$note['id']?>"><?=$note['title']?> by <?=$note['name']?></a>
             </li>
                 <?php endforeach;?>
+
+                <div class="mt-6">
+                <a href="notes/create" class="text-blue-500 hover:underline">create note</a>
+                </div>
         </div>
     </main>
 
